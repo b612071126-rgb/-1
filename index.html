@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>扫雷五子棋</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <div class="title-row">
+      <h1>扫雷五子棋</h1>
+      <button class="help-btn" id="helpBtn">?</button>
+    </div>
+
+    <div class="seg" id="modeSeg">
+      <button class="seg-btn active" data-mode="pve">人机对战</button>
+      <button class="seg-btn" data-mode="pvp">双人对战</button>
+    </div>
+
+    <div class="seg" id="diffSeg">
+      <button class="seg-btn" data-diff="easy">简单</button>
+      <button class="seg-btn active" data-diff="medium">中档</button>
+      <button class="seg-btn" data-diff="hard">困难</button>
+      <button class="seg-btn hell" data-diff="hell">超级地狱</button>
+    </div>
+  </header>
+
+  <div class="status-row">
+    <div class="turn-chip p1" id="turnChip">
+      <span class="stone"></span>
+      <span id="turnText">你的回合</span>
+    </div>
+  </div>
+
+  <main class="board-area">
+    <div class="board" id="board"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="stats">
+      <div class="stat"><span class="k">雷</span><span class="v" id="mineCount">30</span></div>
+      <div class="stat"><span class="k">已探索</span><span class="v" id="explored">0</span></div>
+      <div class="stat"><span class="k">当前</span><span class="v" id="turnStat">你</span></div>
+    </div>
+    <button class="btn-restart" id="restart">重新开始</button>
+  </footer>
+
+</div>
+
+<div class="intro-overlay" id="introOverlay">
+  <div class="intro-card">
+    <h2>玩法说明</h2>
+    <ul>
+      <li>16×16 棋盘，随机藏有 30 颗雷。</li>
+      <li>黑白双方轮流落子，先连成 5 子者获胜。</li>
+      <li>点开未知格：安全格显示周围雷数，数字 0 自动展开。</li>
+      <li>已扫开的空白格、数字格都可以继续落子。</li>
+      <li>把棋子下到雷上（无论雷是否已显现）都会引爆。</li>
+      <li>爆炸后九宫格全部显现，棋子全部清空；中心雷消失，之后不再触发。</li>
+    </ul>
+    <button class="btn-primary" id="introClose">开始游戏</button>
+  </div>
+</div>
+
+<div class="result-overlay" id="resultOverlay">
+  <div class="result-card">
+    <h2 id="resultTitle">游戏结束</h2>
+    <p id="resultDesc"></p >
+    <button class="btn-primary" id="resultRestart">再来一局</button>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
